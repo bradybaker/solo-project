@@ -6,6 +6,19 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import { withStyles } from '@material-ui/core'
+
+const styles = theme => ({
+  root: {
+    display: 'flex',
+  },
+  formControl: {
+    margin: theme.spacing.unit * 3,
+  },
+  group: {
+    margin: `${theme.spacing.unit}px 0`,
+  },
+});
 
 class RegisterForm extends Component {
   state = {
@@ -24,18 +37,21 @@ class RegisterForm extends Component {
     this.props.dispatch({ type: 'REGISTER', payload: this.state.newUser })
   }; // end registerUser
 
-  handleInputChangeFor = (propertyName) => (event) => {
+  handleInputChangeFor = (event, propertyName) => {
     this.setState({
       newUser: {
+        ...this.state.newUser,
         [propertyName]: event.target.value,
       }
     });
   };
 
   render() {
+    const { classes } = this.props
     const { fName, lName, email, username, password, searchable } = this.state.newUser
     return (
       <form className="formPanel" onSubmit={this.registerUser}>
+        {JSON.stringify(this.state.newUser)}
         <h2>Register User</h2>
         {this.props.store.errors.registrationMessage && (
           <h3 className="alert" role="alert">
@@ -105,7 +121,7 @@ class RegisterForm extends Component {
         <div>
           <FormControl component="fieldset">
             <FormLabel component="legend">Searchable</FormLabel>
-            <RadioGroup value={searchable} onChange={(event) => this.handleInputChangeFor(event, searchable)}>
+            <RadioGroup className={classes.group} value={searchable} onChange={(event) => this.handleInputChangeFor(event, 'searchable')}>
               <FormControlLabel value='true' control={<Radio />} label="Yes" />
               <FormControlLabel value='false' control={<Radio />} label="No" />
             </RadioGroup>
@@ -119,4 +135,4 @@ class RegisterForm extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(RegisterForm);
+export default withStyles(styles)(connect(mapStoreToProps)(RegisterForm));
