@@ -1,4 +1,5 @@
 import { all } from 'redux-saga/effects';
+import addBrandSaga from './addBrand';
 import fetchBrands from './fetchBrandSaga';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
@@ -17,5 +18,6 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     fetchBrands(),
+    addBrandSaga(),
   ]);
 }

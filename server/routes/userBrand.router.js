@@ -22,7 +22,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     let queryText = `SELECT brand.id, brand."name", brand.logo FROM brand
                      JOIN user_brand AS ub ON brand.id = ub.brand_id 
                      JOIN "user" ON "user".id = ub.user_id WHERE "user".id=$1;`;
-    pool.query(queryText, [req.params.id]).then((result) => {
+    pool.query(queryText, [req.user.id]).then((result) => {
         res.send(result.rows);
     }).catch((error) => {
         console.log('Error in USER brand router GET', error);
@@ -31,8 +31,21 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 
-router.post('/', (req, res) => {
+router.post('/:id', (req, res) => {
     // POST route code here
+    console.log('Req body', req.body)
+    let brandId = req.body.bId
+    let userId = req.params.id
+    let queryText = `INSERT INTO "user_brand" ("user_id", "brand_id")
+    VALUES ($1, $2);`
+    pool.query(queryText, [userId, brandId])
+        .then(result => {
+            res.sendStatus(201)
+        })
+        .catch(error => {
+            console.log('Error in add brand post', error)
+            res.sendStatus(500)
+        })
 });
 
 module.exports = router;
