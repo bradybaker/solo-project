@@ -1,6 +1,6 @@
-const brandReducer = (state = [], action) => {
+const allBrandReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_BRAND':
+        case 'SET_ALL_BRAND':
             return action.payload;
         default:
             return state;
@@ -8,4 +8,4 @@ const brandReducer = (state = [], action) => {
 };
 
 
-export default brandReducer;
+export default allBrandReducer;
