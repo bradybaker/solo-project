@@ -119,7 +119,7 @@ class RegisterForm extends Component {
           </label>
         </div>
         <div>
-          <FormControl component="fieldset">
+          <FormControl component="fieldset" className={classes.formControl}>
             <FormLabel component="legend">Searchable</FormLabel>
             <RadioGroup className={classes.group} value={searchable} onChange={(event) => this.handleInputChangeFor(event, 'searchable')}>
               <FormControlLabel value='true' control={<Radio />} label="Yes" />
