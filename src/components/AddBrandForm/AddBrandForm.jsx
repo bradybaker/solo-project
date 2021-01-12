@@ -30,12 +30,14 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function AddBrandForm() {
+export default function AddBrandForm(props) {
     const dispatch = useDispatch();
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
-    const reduxStore = useSelector(store => store.allBrandReducer)
+    const [brandId, setBrandId] = useState('')
+    const allBrands = useSelector(store => store.allBrandReducer)
+    const userInfo = useSelector(store => store.user)
 
     useEffect(() => {
         dispatch({ type: 'FETCH_ALL_BRAND' })
@@ -50,8 +52,15 @@ export default function AddBrandForm() {
         setOpen(false);
     };
 
+    const handleSubmit = event => {
+        event.preventDefault()
+        dispatch({ type: 'ADD_BRAND', payload: { id: userInfo.id, bId: brandId } })
+    }
+
+
     const body = (
         <div style={modalStyle} className={classes.paper}>
+            {JSON.stringify(brandId)}
             <Grid item xs={12}>
                 <div style={getModalStyle()} className={classes.paper}>
                     <Typography variant="h6" id="modal-title">
@@ -60,17 +69,17 @@ export default function AddBrandForm() {
                     <Typography variant="subtitle1" id="simple-modal-description">
                         Your favorite brands should populate as you type
                             </Typography>
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <Autocomplete
-                            id="combo-box-demo"
-                            options={reduxStore}
+                            id="Brand Selector"
+                            options={allBrands}
                             getOptionLabel={(option) => option.name}
+                            onChange={(event, value) => setBrandId(value.id)}
                             style={{ width: 300, justifyContent: 'center' }}
                             renderInput={(params) => <TextField {...params} label="Brand Name" variant="outlined" />}
-
                         />
-
                         <Button variant='contained' color='secondary' type='submit'>Get Logo!</Button>
+                        <Button variant='contained' color='primary' onClick={handleClose}>Cancel</Button>
                     </form>
                 </div>
             </Grid>
