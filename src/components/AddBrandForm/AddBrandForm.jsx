@@ -15,7 +15,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 
-export default function FormDialog() {
+export default function AddBrandForm() {
     const dispatch = useDispatch();
     const [open, setOpen] = React.useState(false);
     const [brandId, setBrandId] = useState('')
