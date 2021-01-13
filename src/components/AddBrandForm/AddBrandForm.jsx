@@ -1,50 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { makeStyles } from '@material-ui/core/styles';
-import { Modal, Button, Grid, Typography, TextField } from '@material-ui/core';
+import { Button, TextField, Slide } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import { green } from '@material-ui/core/colors'
+import { green } from '@material-ui/core/colors';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
-function getModalStyle() {
-    const top = 50
-    const left = 50
-
-    return {
-        top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
-    };
-}
-
-const useStyles = makeStyles((theme) => ({
-    paper: {
-        position: 'absolute',
-        width: 400,
-        backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
-    },
-}));
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="down" ref={ref} {...props} />;
+});
 
 
-
-export default function AddBrandForm(props) {
+export default function FormDialog() {
     const dispatch = useDispatch();
-    const classes = useStyles();
-    const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
     const [brandId, setBrandId] = useState('')
     const allBrands = useSelector(store => store.allBrandReducer)
     const userInfo = useSelector(store => store.user)
+
 
     useEffect(() => {
         dispatch({ type: 'FETCH_ALL_BRAND' })
     }, [])
 
 
-    const handleOpen = () => {
+    const handleClickOpen = () => {
         setOpen(true);
     };
 
@@ -57,18 +41,21 @@ export default function AddBrandForm(props) {
         dispatch({ type: 'ADD_BRAND', payload: { id: userInfo.id, bId: brandId } })
     }
 
-
-    const body = (
-        <div style={modalStyle} className={classes.paper}>
-            {JSON.stringify(brandId)}
-            <Grid item xs={12}>
-                <div style={getModalStyle()} className={classes.paper}>
-                    <Typography variant="h6" id="modal-title">
-                        Add A Brand Below!
-                            </Typography>
-                    <Typography variant="subtitle1" id="simple-modal-description">
-                        Your favorite brands should populate as you type
-                            </Typography>
+    return (
+        <div>
+            <AddCircleIcon style={{ fontSize: 100, color: green[500] }} type='button' onClick={handleClickOpen}>
+            </AddCircleIcon>
+            <Dialog
+                open={open}
+                TransitionComponent={Transition}
+                onClose={handleClose}
+                aria-labelledby="form-dialog-title"
+            >
+                <DialogTitle id="form-dialog-title">Add a Brand to Your Closet!</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Helper Text
+                    </DialogContentText>
                     <form onSubmit={handleSubmit}>
                         <Autocomplete
                             id="Brand Selector"
@@ -78,27 +65,17 @@ export default function AddBrandForm(props) {
                             style={{ width: 300, justifyContent: 'center' }}
                             renderInput={(params) => <TextField {...params} label="Brand Name" variant="outlined" />}
                         />
-                        <Button variant='contained' color='secondary' type='submit'>Get Logo!</Button>
-                        <Button variant='contained' color='primary' onClick={handleClose}>Cancel</Button>
+                        <DialogActions>
+                            <Button onClick={handleClose} color="primary">
+                                Cancel
+                        </Button>
+                            <Button onClick={handleClose} color="primary" type='submit'>
+                                Add Brand
+                        </Button>
+                        </DialogActions>
                     </form>
-                </div>
-            </Grid>
-        </div>
-    );
-
-    return (
-        <div>
-            <AddCircleIcon style={{ fontSize: 100, color: green[500] }} type="button" onClick={handleOpen}>
-
-            </AddCircleIcon>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-            >
-                {body}
-            </Modal>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }
