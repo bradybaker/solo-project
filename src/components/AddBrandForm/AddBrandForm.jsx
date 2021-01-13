@@ -41,6 +41,8 @@ export default function AddBrandForm() {
         dispatch({ type: 'ADD_BRAND', payload: { id: userInfo.id, bId: brandId } })
     }
 
+
+
     return (
         <div>
             <AddCircleIcon style={{ fontSize: 100, color: green[500] }} type='button' onClick={handleClickOpen}>
@@ -50,6 +52,7 @@ export default function AddBrandForm() {
                 TransitionComponent={Transition}
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title"
+
             >
                 <DialogTitle id="form-dialog-title">Add a Brand to Your Closet!</DialogTitle>
                 <DialogContent>
