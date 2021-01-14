@@ -6,6 +6,7 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Swal from 'sweetalert2'
 import '../App/App.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -38,8 +39,34 @@ export default function BrandCards() {
 
     const handleDelete = (e, id) => {
         console.log('Clicking delete', id)
-        dispatch({ type: 'DELETE_USER_BRAND', payload: id })
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'The Brand and clothing items will be removed from your profile!',
+            icon: 'warning',
+            heightAuto: false,
+            showCancelButton: true,
+            confirmButtonText: 'Yes!',
+            cancelButtonText: 'No, keep it'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                    'Deleted!',
+                    'Brand Deleted',
+                    'success',
+                    false
+                ) // end Swal IF
+                dispatch({ type: 'DELETE_USER_BRAND', payload: id })
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelled',
+                    'Brand not deleted',
+                    'error',
+                    false
+                )
+            } //end else if
+        }) // end Swal .then
     }
+
 
 
     return (
