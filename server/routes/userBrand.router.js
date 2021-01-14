@@ -48,4 +48,18 @@ router.post('/:id', (req, res) => {
         })
 });
 
+router.delete('/:id', (req, res) => {
+    let brandId = req.params.id
+    let userId = req.user.id
+    const queryText = 'DELETE FROM user_brand WHERE brand_id=$1 AND user_id=$2';
+    pool.query(queryText, [brandId, userId])
+        .then((result) => {
+            res.sendStatus(200)
+        })
+        .catch((err) => {
+            console.log('Error in delete brand router', err);
+            res.sendStatus(500);
+        });
+})
+
 module.exports = router;
