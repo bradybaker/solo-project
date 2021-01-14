@@ -58,7 +58,7 @@ export default function AddBrandForm() {
                 itemName: itemName,
                 itemSize: itemSize,
                 itemNote: itemNote,
-                brandID: userClothes[0]?.brand_id,
+                brandID: brandUrlID,
                 brandUrlID: brandUrlID
             }
         })

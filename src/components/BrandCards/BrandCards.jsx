@@ -28,12 +28,12 @@ export default function BrandCards() {
     const history = useHistory();
     const userBrands = useSelector(store => store.userBrandReducer)
 
-    const goToCloset = (e, id) => {
+    const goToCloset = (e, name, id) => {
         console.log('Going to this brands closet!', id)
 
         history.push({
             pathname: `/closet`,
-            search: `?brandid=${id}`,
+            search: `?brandName=${name}&brandid=${id}`,
         });
     }
 
@@ -80,7 +80,7 @@ export default function BrandCards() {
                                     title={item.name}
                                 />
                                 <CardMedia
-                                    onClick={(e) => goToCloset(e, item.id)}
+                                    onClick={(e) => goToCloset(e, item.name, item.id)}
                                     className={classes.media}
                                     image={item.logo}
                                 />

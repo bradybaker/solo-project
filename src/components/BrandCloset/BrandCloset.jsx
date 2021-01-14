@@ -35,11 +35,13 @@ function BrandCloset() {
     const userClothes = useSelector(store => store.userClothingReducer)
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const brandUrlID = new URLSearchParams(location.search).get('brandid');
+    const params = new URLSearchParams(location.search.substring(1))
+    const brandUrlName = params.get('brandName')
+    const brandUrlID = params.get('brandid');
 
     useEffect(() => {
         dispatch({ type: 'FETCH_USER_CLOTHING', payload: brandUrlID })
-        console.log(brandUrlID)
+        console.log('Brand URL ID number', brandUrlID)
         // eslint-disable-next-line
     }, [location]);
 
@@ -87,7 +89,7 @@ function BrandCloset() {
 
     return (
         <div>
-            <h1>Your {userClothes[0]?.name} Closet</h1>
+            <h1>Your {brandUrlName} Closet</h1>
             {
                 userClothes.map(item => {
                     return (
