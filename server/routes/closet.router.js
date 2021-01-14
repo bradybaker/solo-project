@@ -5,7 +5,9 @@ const router = express.Router();
 
 router.get('/:id', (req, res) => {
     // GET route code here
-    let queryText = 'SELECT * FROM clothing WHERE brand_id=$1 AND user_id=$2;'
+    let queryText = `SELECT brand.name, clothing.id, clothing.item_name, clothing.item_size, 
+                     clothing.item_note, clothing.brand_id FROM clothing JOIN brand 
+                     ON clothing.brand_id = brand.id WHERE brand_id=$1 AND user_id=$2;`
     console.log('Req params', req.params)
     let userId = req.user.id
     let brandId = req.params.id
@@ -21,6 +23,22 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     // POST route code here
+    console.log('Req body', req.body)
+    let item_name = req.body.itemName
+    let item_size = req.body.itemSize
+    let item_note = req.body.itemNote
+    let brand_id = req.body.brandID
+    let userId = req.user.id
+    let queryText = `INSERT INTO "clothing" (item_name, item_size, item_note, brand_id, user_id)
+                     VALUES ($1, $2, $3, $4, $5);`
+    pool.query(queryText, [item_name, item_size, item_note, brand_id, userId])
+        .then(result => {
+            res.sendStatus(201)
+        })
+        .catch(error => {
+            console.log('Error in add brand post', error)
+            res.sendStatus(500)
+        })
 });
 
 router.delete('/:id', (req, res) => {
