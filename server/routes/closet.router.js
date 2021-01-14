@@ -6,6 +6,7 @@ const router = express.Router();
 router.get('/:id', (req, res) => {
     // GET route code here
     let queryText = 'SELECT * FROM clothing WHERE brand_id=$1 AND user_id=$2;'
+    console.log('Req params', req.params)
     let userId = req.user.id
     let brandId = req.params.id
     pool.query(queryText, [brandId, userId])
@@ -21,5 +22,20 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     // POST route code here
 });
+
+router.delete('/:id', (req, res) => {
+    console.log('req params in delete route ', req.params)
+    let itemId = req.params.id
+    let userId = req.user.id
+    const queryText = 'DELETE FROM clothing WHERE id=$1 AND user_id=$2;'
+    pool.query(queryText, [itemId, userId])
+        .then((result) => {
+            res.sendStatus(200)
+        })
+        .catch((err) => {
+            console.log('Error in delete brand router', err);
+            res.sendStatus(500);
+        });
+})
 
 module.exports = router;
