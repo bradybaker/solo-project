@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import AddClothingItem from '../AddClothingItem/AddClothingItem.jsx'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
@@ -86,6 +87,7 @@ function BrandCloset() {
 
     return (
         <div>
+            <h1>Your {userClothes[0]?.name} Closet</h1>
             {
                 userClothes.map(item => {
                     return (
@@ -129,6 +131,7 @@ function BrandCloset() {
                     )
                 })
             }
+            <AddClothingItem />
         </div >
     );
 }

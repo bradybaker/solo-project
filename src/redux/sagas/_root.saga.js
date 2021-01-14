@@ -1,5 +1,6 @@
 import { all } from 'redux-saga/effects';
 import addBrandSaga from './addBrand';
+import addClothingItemSaga from './addClothingItem.saga';
 import clothingSaga from './clothingSaga';
 import deleteUserClothingItemSaga from './deleteClothingItem.saga';
 import deleteUserBrandSaga from './deleteUserBrand.saga';
@@ -25,5 +26,6 @@ export default function* rootSaga() {
     clothingSaga(),
     deleteUserBrandSaga(),
     deleteUserClothingItemSaga(),
+    addClothingItemSaga(),
   ]);
 }
