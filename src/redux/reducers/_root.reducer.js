@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
 import userBrandReducer from './userBrand.reducer'
+import userClothingReducer from './userClothing.reducer'
 import allBrandReducer from './allBrandReducer'
 
 // rootReducer is the primary reducer for our entire project
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   userBrandReducer,
   allBrandReducer,
+  userClothingReducer
 });
 
 export default rootReducer;

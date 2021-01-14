@@ -25,6 +25,7 @@ export default function AddBrandForm() {
 
     useEffect(() => {
         dispatch({ type: 'FETCH_ALL_BRAND' })
+        // eslint-disable-next-line
     }, [])
 
 
