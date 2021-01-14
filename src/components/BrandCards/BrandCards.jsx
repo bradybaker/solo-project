@@ -30,11 +30,16 @@ const useStyles = makeStyles((theme) => ({
 export default function RecipeReviewCard() {
     const classes = useStyles();
     const history = useHistory();
+
     const userBrands = useSelector(store => store.userBrandReducer)
 
-    const go = (e, id) => {
+    const goToCloset = (e, id) => {
         console.log('Going to this brands closet!', id)
-        history.push(`/closet/${id}`)
+
+        history.push({
+            pathname: `/closet`,
+            search: `?brandid=${id}`,
+        });
     }
 
 
@@ -52,7 +57,7 @@ export default function RecipeReviewCard() {
                             title={item.name}
                         />
                         <CardMedia
-                            onClick={(e) => go(e, item.id)}
+                            onClick={(e) => goToCloset(e, item.id)}
                             className={classes.media}
                             image={item.logo}
                         />

@@ -72,7 +72,7 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/closet/:id"
+              path="/closet"
               component={BrandCloset}
             />
             <ProtectedRoute
