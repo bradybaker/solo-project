@@ -11,10 +11,10 @@ import '../App/App.css'
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: 250,
-        margin: 20,
-        flexGrow: 1,
-        height: 300
+        // width: 250,
+        // margin: 20,
+        // flexGrow: 1,
+        // height: 300,
     },
     media: {
         height: 200,
@@ -84,7 +84,7 @@ export default function BrandCards() {
                                     className={classes.media}
                                     image={item.logo}
                                 />
-                                <DeleteIcon style={{ fontSize: 25, marginLeft: 210 }} onClick={(e) => handleDelete(e, item.id)} />
+                                <DeleteIcon style={{ fontSize: 25, marginLeft: 210, marginTop: 5 }} onClick={(e) => handleDelete(e, item.id)} />
                             </Card>
                         </ div>
                     )

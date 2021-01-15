@@ -12,6 +12,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Swal from 'sweetalert2'
 import EditClothingItem from '../EditClothingItem/EditClothingItem.jsx';
+import '../App/App.css'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -89,23 +90,17 @@ function BrandCloset() {
         }) // end Swal .then
     }
 
-    const handleEdit = (id) => {
-
-        console.log('id to edit', id)
-    }
-
-
     return (
         <div>
             <h1>Your {brandUrlName} Closet</h1>
-            <div>
+            <div className='brandCardContainer'>
                 {
                     userClothes.map(item => {
                         return (
                             <div key={item.id}>
                                 <Card className={classes.root} variant="outlined" >
                                     <CardContent>
-                                        <IconButton aria-label="settings" onClick={(e) => handleClick(e, item)} style={{ marginLeft: 200, paddingTop: 1 }} >
+                                        <IconButton aria-label="settings" onClick={(e) => handleClick(e, item)} style={{ marginLeft: 180, paddingTop: 1 }} >
                                             <MoreVertIcon />
                                         </IconButton>
                                         <Popover
