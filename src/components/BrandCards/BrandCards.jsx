@@ -11,10 +11,10 @@ import '../App/App.css'
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: 250,
-        margin: 20,
-        flexGrow: 1,
-        height: 300
+        // width: 250,
+        // margin: 20,
+        // flexGrow: 1,
+        // height: 300,
     },
     media: {
         height: 200,
