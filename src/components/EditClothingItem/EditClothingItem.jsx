@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import { useLocation } from 'react-router-dom'
 import { Button, TextField, Slide } from '@material-ui/core';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import { green } from '@material-ui/core/colors';
+import EditIcon from '@material-ui/icons/Edit';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -25,14 +24,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function AddClothingItem() {
+export default function EditClothingItem(props) {
     const dispatch = useDispatch();
     const [open, setOpen] = React.useState(false);
     const classes = useStyles();
     const location = useLocation();
-    const [itemName, setItemName] = useState('');
-    const [itemSize, setItemSize] = useState('');
-    const [itemNote, setItemNote] = useState('');
+    const selectedCard = useSelector(store => store.edit)
+    const [itemName, setItemName] = useState(selectedCard.item_name);
+    const [itemSize, setItemSize] = useState(selectedCard.item_size);
+    const [itemNote, setItemNote] = useState(selectedCard.item_note);
     const brandUrlID = new URLSearchParams(location.search).get('brandid');
 
     useEffect(() => {
@@ -51,13 +51,14 @@ export default function AddClothingItem() {
     const handleSubmit = event => {
         event.preventDefault()
         dispatch({
-            type: 'ADD_USER_CLOTHING_ITEM',
+            type: 'EDIT_USER_CLOTHING_ITEM',
             payload:
             {
+                id: selectedCard.id,
                 itemName: itemName,
                 itemSize: itemSize,
                 itemNote: itemNote,
-                brandID: brandUrlID,
+                brandID: selectedCard.brand_id,
                 brandUrlID: brandUrlID
             }
         })
@@ -65,8 +66,8 @@ export default function AddClothingItem() {
 
     return (
         <div>
-            <AddCircleIcon style={{ fontSize: 100, color: green[500] }} type='button' onClick={handleClickOpen}>
-            </AddCircleIcon>
+            <EditIcon style={{ margin: 5 }} type='button' onClick={handleClickOpen}>
+            </EditIcon>
             <Dialog
                 open={open}
                 TransitionComponent={Transition}
@@ -74,7 +75,7 @@ export default function AddClothingItem() {
                 aria-labelledby="form-dialog-title"
 
             >
-                <DialogTitle id="form-dialog-title">Add a clothing item to this brand!</DialogTitle>
+                <DialogTitle id="form-dialog-title">Editing a clothing item</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         Helper Text
@@ -84,6 +85,7 @@ export default function AddClothingItem() {
                             required
                             id="Item Name"
                             label="Item Name"
+                            value={itemName}
                             onChange={(event) => setItemName(event.target.value)}
                             variant="outlined"
                         />
@@ -91,6 +93,7 @@ export default function AddClothingItem() {
                             required
                             id="Item Size"
                             label="Item Size"
+                            value={itemSize}
                             onChange={(event) => setItemSize(event.target.value)}
                             variant="outlined"
                         />
@@ -98,6 +101,7 @@ export default function AddClothingItem() {
                             required
                             id="Item Note"
                             label="Item Note"
+                            value={itemNote}
                             onChange={(event) => setItemNote(event.target.value)}
                             variant="outlined"
                         />
@@ -106,7 +110,7 @@ export default function AddClothingItem() {
                                 Cancel
                         </Button>
                             <Button onClick={handleClose} color="primary" type='submit'>
-                                Add Clothing Item
+                                Edit Clothing Item
                         </Button>
                         </DialogActions>
                     </form>

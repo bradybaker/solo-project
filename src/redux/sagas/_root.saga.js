@@ -4,6 +4,7 @@ import addClothingItemSaga from './addClothingItem.saga';
 import clothingSaga from './clothingSaga';
 import deleteUserClothingItemSaga from './deleteClothingItem.saga';
 import deleteUserBrandSaga from './deleteUserBrand.saga';
+import editUserClothingItemSaga from './editClothingItem.saga';
 import fetchBrands from './fetchBrandSaga';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
@@ -27,5 +28,6 @@ export default function* rootSaga() {
     deleteUserBrandSaga(),
     deleteUserClothingItemSaga(),
     addClothingItemSaga(),
+    editUserClothingItemSaga(),
   ]);
 }
