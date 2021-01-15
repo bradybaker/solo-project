@@ -84,7 +84,7 @@ export default function BrandCards() {
                                     className={classes.media}
                                     image={item.logo}
                                 />
-                                <DeleteIcon style={{ fontSize: 25, marginLeft: 210 }} onClick={(e) => handleDelete(e, item.id)} />
+                                <DeleteIcon style={{ fontSize: 25, marginLeft: 210, marginTop: 5 }} onClick={(e) => handleDelete(e, item.id)} />
                             </Card>
                         </ div>
                     )

@@ -12,6 +12,9 @@ theme.overrides = {
             margin: 20,
             flexGrow: 1,
             height: 300,
+            "&:hover": {
+                backgroundColor: 'rgb(7, 177, 77, 0.42)'
+            }
         }
     }
 }
