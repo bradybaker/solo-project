@@ -56,4 +56,20 @@ router.delete('/:id', (req, res) => {
         });
 })
 
+router.put('/:id', (req, res) => {
+    console.log('Edit req body', req.body)
+    let id = req.params.id
+    let itemName = req.body.itemName
+    let itemSize = req.body.itemSize
+    let itemNote = req.body.itemNote
+    let queryText = `UPDATE clothing SET item_name=$1, item_size=$2, item_note=$3 WHERE id=$4`
+    pool.query(queryText, [itemName, itemSize, itemNote, id])
+        .then(() => {
+            res.sendStatus(201)
+        })
+        .catch(err => {
+            console.log('Error in closet PUT', err)
+        })
+})
+
 module.exports = router;
