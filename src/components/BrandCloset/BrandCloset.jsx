@@ -93,6 +93,7 @@ function BrandCloset() {
     return (
         <div>
             <h1>Your {brandUrlName} Closet</h1>
+            <i class="fas fa-user-md"></i>
             <div className='brandCardContainer'>
                 {
                     userClothes.map(item => {

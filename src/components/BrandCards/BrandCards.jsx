@@ -1,34 +1,19 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import DeleteIcon from '@material-ui/icons/Delete';
+import Card from './Card'
 import Swal from 'sweetalert2'
 import '../App/App.css'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        // width: 250,
-        // margin: 20,
-        // flexGrow: 1,
-        // height: 300,
-    },
-    media: {
-        height: 200,
-        // paddingTop: '40%', // 16:9
-    },
-}));
 
-export default function BrandCards() {
-    const classes = useStyles();
+
+export default function BrandCards(props) {
     const dispatch = useDispatch();
     const history = useHistory();
     const userBrands = useSelector(store => store.userBrandReducer)
 
-    const goToCloset = (e, name, id) => {
+
+    const goToCloset = (name, id) => {
         console.log('Going to this brands closet!', id)
 
         history.push({
@@ -37,7 +22,7 @@ export default function BrandCards() {
         });
     }
 
-    const handleDelete = (e, id) => {
+    const handleDelete = (id) => {
         console.log('Clicking delete', id)
         Swal.fire({
             title: 'Are you sure?',
@@ -67,29 +52,37 @@ export default function BrandCards() {
         }) // end Swal .then
     }
 
+    const compare = (a, b) => {
+        const nameA = a.name.toUpperCase();
+        const nameB = b.name.toUpperCase();
 
+        let comparison = 0;
+        if (nameA > nameB) {
+            comparison = 1;
+        } else if (nameA < nameB) {
+            comparison = -1;
+        }
+        return comparison;
+    }
 
     return (
         <div className='brandCardContainer'>
             {
-                userBrands.map(item => {
+                userBrands.sort(compare).map(item => {
                     return (
-                        <div key={item.id}  >
-                            <Card className={classes.root}>
-                                <CardHeader
-                                    title={item.name}
-                                />
-                                <CardMedia
-                                    onClick={(e) => goToCloset(e, item.name, item.id)}
-                                    className={classes.media}
-                                    image={item.logo}
-                                />
-                                <DeleteIcon style={{ fontSize: 25, marginLeft: 210, marginTop: 5 }} onClick={(e) => handleDelete(e, item.id)} />
-                            </Card>
-                        </ div>
+                        <div key={item.id}>
+                            <Card
+                                item={item}
+                                handleDelete={handleDelete}
+                                goToCloset={goToCloset}
+                                editMode={props.editMode}
+                            />
+                        </div>
                     )
                 })
+
             }
         </div>
     );
 }
+
