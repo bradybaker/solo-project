@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
-    // GET route code here
     console.log('is authenticated?', req.isAuthenticated());
     console.log('user', req.user);
     let queryText = `SELECT brand.id, brand."name", brand.logo FROM brand
@@ -32,8 +31,6 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 
 
 router.post('/:id', (req, res) => {
-    // POST route code here
-    console.log('Req body', req.body)
     let brandId = req.body.bId
     let userId = req.params.id
     let queryText = `INSERT INTO "user_brand" ("user_id", "brand_id")

@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import BrandCards from '../BrandCards/BrandCards.jsx'
 import LogOutButton from '../LogOutButton/LogOutButton';
 import AddBrandForm from '../AddBrandForm/AddBrandForm.jsx';
+import { useHistory } from 'react-router-dom'
 
 function UserPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const userInfo = useSelector(store => store.user)
   const [editMode, setEditMode] = useState(false)
 
@@ -13,6 +15,11 @@ function UserPage() {
     dispatch({ type: 'FETCH_USER_BRAND', payload: userInfo.id })
     // eslint-disable-next-line
   }, [])
+
+  const goToFollowedClosets = () => {
+    history.push('/followPage')
+    console.log('Click friend button')
+  }
 
   return (
     <div>
@@ -23,6 +30,7 @@ function UserPage() {
       <AddBrandForm />
       <LogOutButton className="log-in" />
       <button onClick={() => setEditMode(!editMode)}>{editMode ? 'Cancel' : 'Delete Brand'}</button>
+      <button onClick={() => goToFollowedClosets()}>Followed Closets</button>
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -17,6 +16,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 
 
@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ResponsiveDrawer(props) {
+    const history = useHistory();
     const dispatch = useDispatch();
     const { window } = props;
     const classes = useStyles();
@@ -66,6 +67,15 @@ function ResponsiveDrawer(props) {
         setMobileOpen(!mobileOpen);
     };
 
+    // const goToFollowedClosets = () => {
+    //     history.push('/user')
+    //     console.log('Click friend button')
+    // }
+
+    // const goToUserBrands = () => {
+    //     history.push('/user')
+    // }
+
     const drawer = (
         <div>
             <div className={classes.toolbar} />
@@ -73,7 +83,7 @@ function ResponsiveDrawer(props) {
             <List>
                 {['Your Closet', 'Friends'].map((text, index) => (
                     <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                        <ListItemIcon >{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItem>
                 ))}
@@ -146,13 +156,5 @@ function ResponsiveDrawer(props) {
         </div>
     );
 }
-
-ResponsiveDrawer.propTypes = {
-    /**
-     * Injected by the documentation to work in an iframe.
-     * You won't need it on your project.
-     */
-    window: PropTypes.func,
-};
 
 export default ResponsiveDrawer;
