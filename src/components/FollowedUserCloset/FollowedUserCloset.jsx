@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-import Card from '../BrandCards/Card'
+import FollowedUserCard from './FollowedUserCard'
 
 const FollowedUserCloset = () => {
     const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const FollowedUserCloset = () => {
                     userBrands.sort(compare).map(item => {
                         return (
                             <div key={item.id}>
-                                <Card
+                                <FollowedUserCard
                                     item={item}
                                 />
                             </div>

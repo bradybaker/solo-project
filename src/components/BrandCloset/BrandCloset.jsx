@@ -34,6 +34,7 @@ function BrandCloset() {
     const location = useLocation();
     const dispatch = useDispatch();
     const userClothes = useSelector(store => store.userClothingReducer)
+    const userInfo = useSelector(store => store.user)
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const params = new URLSearchParams(location.search.substring(1))
@@ -42,10 +43,9 @@ function BrandCloset() {
     const selectedCard = useSelector(store => store.edit)
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_USER_CLOTHING', payload: brandUrlID })
-        console.log('Brand URL ID number', brandUrlID)
+        dispatch({ type: 'FETCH_USER_CLOTHING', payload: { brandID: brandUrlID, userID: userInfo.id } })
         // eslint-disable-next-line
-    }, [location]);
+    }, []);
 
     const handleClick = (event, item) => {
         setAnchorEl(event.currentTarget);
