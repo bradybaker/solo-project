@@ -19,6 +19,7 @@ import { ThemeProvider } from '@material-ui/core'
 import './App.css';
 import theme from '../../theme';
 import SideNav from '../SideNav/SideNav.jsx'
+import FollowPage from '../FollowPage/FollowPage';
 
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      {userInfo === {} && <SideNav />}
+      {/* {userInfo.id && <SideNav />} */}
       <Router>
         <div>
           <Switch>
@@ -82,11 +83,19 @@ function App() {
               component={LoginPage}
               authRedirect="/user"
             />
+
+            <ProtectedRoute
+              exact
+              path="/followPage"
+              component={FollowPage}
+            />
+
             <ProtectedRoute
               exact
               path="/closet"
               component={BrandCloset}
             />
+
             <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"

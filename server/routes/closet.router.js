@@ -1,9 +1,10 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     // GET route code here
     let queryText = `SELECT brand.name, clothing.id, clothing.item_name, clothing.item_size, 
                      clothing.item_note, clothing.brand_id FROM clothing JOIN brand 
