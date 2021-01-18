@@ -6,6 +6,7 @@ import userClothingReducer from './userClothing.reducer'
 import allBrandReducer from './allBrandReducer'
 import edit from './edit.reducer'
 import publicUsers from './allPublicUsers.reducer'
+import followedUsers from './followedUsers.reducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,7 +22,7 @@ const rootReducer = combineReducers({
   userClothingReducer,
   edit,
   publicUsers,
-
+  followedUsers,
 });
 
 export default rootReducer;
