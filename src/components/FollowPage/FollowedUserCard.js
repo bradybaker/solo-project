@@ -9,7 +9,7 @@ const FollowedUserCard = (props) => {
     return (
         <>
             <div className='card hvr-float'>
-                {f_name} {l_name}
+                <h2>{f_name} {l_name}</h2>
             </div>
         </>
     )

@@ -18,7 +18,7 @@ const FollowPage = () => {
 
     return (
         <div>
-            <h1>Your Followed Closets</h1>
+            <h1>Closets You Follow</h1>
             <div className='brandCardContainer'>
                 {
                     followedUsers.map(user => {

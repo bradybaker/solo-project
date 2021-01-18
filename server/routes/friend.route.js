@@ -32,7 +32,18 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 
 
 router.post('/', (req, res) => {
-    // POST route code here
+    let followedUserID = req.body.followedUserID
+    let userId = req.user.id
+    let queryText = `INSERT INTO "user_friend" ("user_id", "friend_id")
+    VALUES ($1, $2);`
+    pool.query(queryText, [userId, followedUserID])
+        .then(result => {
+            res.sendStatus(201)
+        })
+        .catch(error => {
+            console.log('Error in add brand post', error)
+            res.sendStatus(500)
+        })
 });
 
 module.exports = router;
