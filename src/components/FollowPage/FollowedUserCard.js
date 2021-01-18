@@ -12,7 +12,7 @@ const FollowedUserCard = (props) => {
 
         history.push({
             pathname: `/followedUserCloset`,
-            search: `?userid=${id}&fname=${fname}$lname=${lname}`,
+            search: `?userid=${id}&fname=${fname}&lname=${lname}`,
         });
     }
 
