@@ -6,7 +6,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-    let queryText = `SELECT "user".id, "user".f_name, "user".l_name  FROM "user" WHERE searchable=true;`
+    let queryText = `SELECT "user".id, "user".username  FROM "user" WHERE searchable=true;`
     pool.query(queryText)
         .then(result => {
             res.send(result.rows)

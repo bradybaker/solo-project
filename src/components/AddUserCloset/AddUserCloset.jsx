@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-    useDispatch,
-    // useSelector 
-} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Button, TextField, Slide } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
@@ -21,7 +18,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 export default function AddUserCloset() {
     const dispatch = useDispatch();
     const [open, setOpen] = React.useState(false);
-    const [brandId, setBrandId] = useState('')
+    const [followedUserID, setFollowedUserID] = useState('')
+    const publicUsers = useSelector(store => store.publicUsers)
 
 
     useEffect(() => {
@@ -53,20 +51,20 @@ export default function AddUserCloset() {
                 open={open}
                 TransitionComponent={Transition}
                 onClose={handleClose}
-                aria-labelledby="form-dialog-title"
+                aria-labelledby="follow-another-user"
 
             >
-                <DialogTitle id="form-dialog-title">Follow Another user's closet!</DialogTitle>
+                <DialogTitle id="follow-another-user">Follow another user's closet!</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         Helper Text
                     </DialogContentText>
                     <form onSubmit={handleSubmit}>
                         <Autocomplete
-                            id="Brand Selector"
-                            // options={allBrands}
-                            getOptionLabel={(option) => option.name}
-                            onChange={(event, value) => setBrandId(value.id)}
+                            id="user-search"
+                            options={publicUsers}
+                            getOptionLabel={(option) => option.username}
+                            onChange={(event, value) => setFollowedUserID(value.id)}
                             style={{ width: 300, justifyContent: 'center' }}
                             renderInput={(params) => <TextField {...params} label="Brand Name" variant="outlined" />}
                         />
@@ -75,9 +73,10 @@ export default function AddUserCloset() {
                                 Cancel
                         </Button>
                             <Button onClick={handleClose} color="primary" type='submit'>
-                                Add Closet
+                                Follow Closet
                         </Button>
                         </DialogActions>
+                        {JSON.stringify(followedUserID)}
                     </form>
                 </DialogContent>
             </Dialog>
