@@ -38,7 +38,7 @@ export default function AddUserCloset() {
 
     const handleSubmit = event => {
         event.preventDefault()
-        // dispatch({ type: 'ADD_BRAND', payload: { id: userInfo.id, bId: brandId } })
+        dispatch({ type: 'FOLLOW_USER', payload: followedUserID })
     }
 
 
@@ -76,7 +76,6 @@ export default function AddUserCloset() {
                                 Follow Closet
                         </Button>
                         </DialogActions>
-                        {JSON.stringify(followedUserID)}
                     </form>
                 </DialogContent>
             </Dialog>
