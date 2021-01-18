@@ -41,8 +41,6 @@ export default function AddUserCloset() {
         dispatch({ type: 'FOLLOW_USER', payload: followedUserID })
     }
 
-
-
     return (
         <div>
             <AddCircleIcon style={{ fontSize: 100, color: green[500] }} type='button' onClick={handleClickOpen}>
@@ -64,7 +62,7 @@ export default function AddUserCloset() {
                             id="user-search"
                             options={publicUsers}
                             getOptionLabel={(option) => option.username}
-                            onChange={(event, value) => setFollowedUserID(value.id)}
+                            onChange={(event, value) => setFollowedUserID(value)}
                             style={{ width: 300, justifyContent: 'center' }}
                             renderInput={(params) => <TextField {...params} label="Brand Name" variant="outlined" />}
                         />
