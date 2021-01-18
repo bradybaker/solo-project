@@ -21,12 +21,13 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     let queryText = `SELECT brand.id, brand."name", brand.logo FROM brand
                      JOIN user_brand AS ub ON brand.id = ub.brand_id 
                      JOIN "user" ON "user".id = ub.user_id WHERE "user".id=$1;`;
-    pool.query(queryText, [req.user.id]).then((result) => {
-        res.send(result.rows);
-    }).catch((error) => {
-        console.log('Error in USER brand router GET', error);
-        res.sendStatus(500);
-    });
+    pool.query(queryText, [req.params.id])
+        .then((result) => {
+            res.send(result.rows);
+        }).catch((error) => {
+            console.log('Error in USER brand router GET', error);
+            res.sendStatus(500);
+        });
 });
 
 
