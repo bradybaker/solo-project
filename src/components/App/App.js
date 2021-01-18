@@ -21,6 +21,7 @@ import theme from '../../theme';
 import SideNav from '../SideNav/SideNav.jsx'
 import FollowPage from '../FollowPage/FollowPage';
 import FollowedUserCloset from '../FollowedUserCloset/FollowedUserCloset';
+import FollowedUserBrandCloset from '../FollowedUserCloset/FollowedUserBrandCloset'
 
 
 function App() {
@@ -83,6 +84,12 @@ function App() {
               path="/login"
               component={LoginPage}
               authRedirect="/user"
+            />
+
+            <ProtectedRoute
+              exact
+              path="/followedUserBrandCloset"
+              component={FollowedUserBrandCloset}
             />
 
             <ProtectedRoute
