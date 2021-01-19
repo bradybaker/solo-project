@@ -11,6 +11,7 @@ export default function BrandCards(props) {
     const dispatch = useDispatch();
     const history = useHistory();
     const userBrands = useSelector(store => store.userBrandReducer)
+    const userInfo = useSelector(store => store.user)
 
 
     const goToCloset = (name, id) => {
@@ -40,7 +41,7 @@ export default function BrandCards(props) {
                     'success',
                     false
                 ) // end Swal IF
-                dispatch({ type: 'DELETE_USER_BRAND', payload: id })
+                dispatch({ type: 'DELETE_USER_BRAND', payload: { brandID: id, userID: userInfo.id } })
             } else if (result.dismiss === Swal.DismissReason.cancel) {
                 Swal.fire(
                     'Cancelled',

@@ -4,6 +4,7 @@ import BrandCards from '../BrandCards/BrandCards.jsx'
 import LogOutButton from '../LogOutButton/LogOutButton';
 import AddBrandForm from '../AddBrandForm/AddBrandForm.jsx';
 import { useHistory } from 'react-router-dom'
+import '../App/App.css'
 
 function UserPage() {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ function UserPage() {
   }
 
   return (
-    <div>
+    <div className='root'>
 
       <h1 id="welcome">Welcome, {userInfo.f_name}!</h1>
       <p>Your ID is: {userInfo.id}</p>
@@ -35,5 +36,4 @@ function UserPage() {
   );
 }
 
-// this allows us to use <App /> in index.js
 export default UserPage;

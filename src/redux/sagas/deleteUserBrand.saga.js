@@ -3,8 +3,8 @@ import axios from 'axios';
 
 function* deleteUserBrand(action) {
     try {
-        yield axios.delete(`/api/brand/${action.payload}`)
-        yield put({ type: 'FETCH_USER_BRAND' })
+        yield axios.delete(`/api/brand/${action.payload.brandID}`)
+        yield put({ type: 'FETCH_USER_BRAND', payload: action.payload.userID })
     } catch (error) {
         console.log('Error in deleteUserBrand Saga', error)
     }
