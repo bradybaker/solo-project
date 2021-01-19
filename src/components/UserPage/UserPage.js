@@ -3,11 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import BrandCards from '../BrandCards/BrandCards.jsx'
 import LogOutButton from '../LogOutButton/LogOutButton';
 import AddBrandForm from '../AddBrandForm/AddBrandForm.jsx';
-import { useHistory } from 'react-router-dom'
+import '../App/App.css'
 
 function UserPage() {
   const dispatch = useDispatch();
-  const history = useHistory();
   const userInfo = useSelector(store => store.user)
   const [editMode, setEditMode] = useState(false)
 
@@ -16,13 +15,8 @@ function UserPage() {
     // eslint-disable-next-line
   }, [])
 
-  const goToFollowedClosets = () => {
-    history.push('/followPage')
-    console.log('Click friend button')
-  }
-
   return (
-    <div>
+    <div className='root'>
 
       <h1 id="welcome">Welcome, {userInfo.f_name}!</h1>
       <p>Your ID is: {userInfo.id}</p>
@@ -30,10 +24,8 @@ function UserPage() {
       <AddBrandForm />
       <LogOutButton className="log-in" />
       <button onClick={() => setEditMode(!editMode)}>{editMode ? 'Cancel' : 'Delete Brand'}</button>
-      <button onClick={() => goToFollowedClosets()}>Followed Closets</button>
     </div>
   );
 }
 
-// this allows us to use <App /> in index.js
 export default UserPage;

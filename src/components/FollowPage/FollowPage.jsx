@@ -3,6 +3,7 @@ import AddUserCloset from '../AddUserCloset/AddUserCloset';
 import { useDispatch, useSelector } from 'react-redux'
 import '../App/App.css'
 import FollowedUserCard from './FollowedUserCard';
+import '../App/App.css'
 
 
 const FollowPage = () => {
@@ -17,7 +18,7 @@ const FollowPage = () => {
     }, [])
 
     return (
-        <div>
+        <div className='root'>
             <h1>Closets You Follow</h1>
             <div className='brandCardContainer'>
                 {

@@ -9,7 +9,6 @@ router.get('/:id/:brandID', rejectUnauthenticated, (req, res) => {
     let queryText = `SELECT brand.name, clothing.id, clothing.item_name, clothing.item_size, 
                      clothing.item_note, clothing.brand_id FROM clothing JOIN brand 
                      ON clothing.brand_id = brand.id WHERE brand_id=$1 AND user_id=$2;`
-    console.log('Req params', req.params)
     let userId = req.params.id
     let brandId = req.params.brandID
     pool.query(queryText, [brandId, userId])
@@ -24,7 +23,6 @@ router.get('/:id/:brandID', rejectUnauthenticated, (req, res) => {
 
 router.post('/', (req, res) => {
     // POST route code here
-    console.log('Req body', req.body)
     let item_name = req.body.itemName
     let item_size = req.body.itemSize
     let item_note = req.body.itemNote

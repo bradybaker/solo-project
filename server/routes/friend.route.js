@@ -32,7 +32,6 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 
 
 router.post('/', (req, res) => {
-    console.log('req body', req.body.id)
     let followedUserID = req.body.id
     let userId = req.user.id
     let queryText = `INSERT INTO "user_friend" ("user_id", "friend_id")

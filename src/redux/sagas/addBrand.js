@@ -4,7 +4,7 @@ import axios from 'axios';
 function* addBrand(action) {
     try {
         yield axios.post(`/api/brand/${action.payload.id}`, action.payload)
-        yield put({ type: 'FETCH_USER_BRAND' })
+        yield put({ type: 'FETCH_USER_BRAND', payload: action.payload.id })
     } catch (error) {
         console.log('Error in addBrand Saga', error)
     }

@@ -40,8 +40,8 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      {/* {userInfo.id && <SideNav />} */}
       <Router>
+        {userInfo.id && <SideNav />}
         <div>
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}

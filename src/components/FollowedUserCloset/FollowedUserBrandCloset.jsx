@@ -23,7 +23,7 @@ function FollowedUserBrandCloset() {
 
 
     return (
-        <div >
+        <div className='root' >
             <h1>{fName} {lName}'s {brandName} Closet</h1>
             <div className='brandCardContainer'>
                 {
