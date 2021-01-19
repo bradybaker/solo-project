@@ -1,21 +1,55 @@
 .SideNav {
     height: 100%;
-    width: 300px;
+    width: 250px;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
     overflow-x: hidden;
     padding-top: 1.2em;
-    background-color: turquoise;
+    background-color: #2f4050;
+    text-decoration: none;
 }
 
-.SideNav a {
+.SideNavList {
+    height: auto;
+    padding: 0;
+    width: 100%;
+    text-decoration: none;
+}
+
+.SideNavList .ListItem {
+    width: 100%;
+    height: 50px;
+    border: 1px solid black;
+    list-style-type: none;
+    margin: 0%;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.ListItem .fas {
+    flex: 30%;
+}
+
+/* .SideNav a {
     display: block;
     text-decoration: none;
     font-size: 2em;
     padding: 1em;
+} */
+
+.SideNav h2 {
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
 }
+
 
 @media screen and (max-width: 700px) {
     .SideNav {

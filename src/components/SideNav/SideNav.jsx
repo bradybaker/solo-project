@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 // import AppBar from '@material-ui/core/AppBar';
 // import CssBaseline from '@material-ui/core/CssBaseline';
 // import Divider from '@material-ui/core/Divider';
@@ -155,13 +156,15 @@ import './SideNav.css'
 
 function SideNav() {
     return (
+
         <div className='SideNav'>
-            <a href='#'>Link</a>
-            <a href='#'>Link</a>
-            <a href='#'>Link</a>
-            <a href='#'>Link</a>
-            <a href='#'>Link</a>
-        </div>
+            <h2>Sidebar</h2>
+            <ul className='SideNavList'>
+                <Link to='/user'><li className='ListItem'><i className="fas fa-user-circle"></i><div> Your Closet </div></li></Link>
+                <Link to='/followPage'><li className='ListItem'><i className="fas fa-user-friends"></i> Followed Closets</li></Link>
+                <Link><li className='ListItem'><i className="fas fa-sign-out-alt"></i> Logout</li></Link>
+            </ul>
+        </div >
     )
 }
 

@@ -91,7 +91,7 @@ function BrandCloset() {
     }
 
     return (
-        <div>
+        <div className='root'>
             <h1>Your {brandUrlName} Closet</h1>
             <div className='brandCardContainer'>
                 {

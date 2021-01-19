@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import FollowedUserCard from './FollowedUserCard'
+import '../App/App.css'
 
 const FollowedUserCloset = () => {
     const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const FollowedUserCloset = () => {
     }
 
     return (
-        <div >
+        <div className='root' >
             <h1>{fName} {lName}'s closet</h1>
             <div className='brandCardContainer'>
                 {
