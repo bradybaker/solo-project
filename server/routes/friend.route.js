@@ -46,4 +46,18 @@ router.post('/', (req, res) => {
         })
 });
 
+router.delete('/:id', (req, res) => {
+    let friendId = req.params.id
+    let userId = req.user.id
+    const queryText = 'DELETE FROM user_friend WHERE friend_id=$1 AND user_id=$2';
+    pool.query(queryText, [friendId, userId])
+        .then((result) => {
+            res.sendStatus(200)
+        })
+        .catch((err) => {
+            console.log('Error in delete friend router', err);
+            res.sendStatus(500);
+        });
+})
+
 module.exports = router;

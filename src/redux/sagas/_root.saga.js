@@ -10,6 +10,7 @@ import fetchUsersToFollow from './fetchPublicUsers';
 import followUserSaga from './followUser.saga';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
+import unfollowUserSaga from './unfollowUser.saga';
 import userSaga from './user.saga';
 
 // rootSaga is the primary saga.
@@ -33,5 +34,6 @@ export default function* rootSaga() {
     editUserClothingItemSaga(),
     fetchUsersToFollow(),
     followUserSaga(),
+    unfollowUserSaga(),
   ]);
 }

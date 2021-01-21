@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import AddUserCloset from '../AddUserCloset/AddUserCloset';
 import { useDispatch, useSelector } from 'react-redux'
 import '../App/App.css'
@@ -10,6 +10,8 @@ const FollowPage = () => {
     const dispatch = useDispatch()
     const userInfo = useSelector(store => store.user)
     const followedUsers = useSelector(store => store.followedUsers)
+    const [editMode, setEditMode] = useState(false)
+
 
 
     useEffect(() => {
@@ -25,13 +27,17 @@ const FollowPage = () => {
                     followedUsers.map(user => {
                         return (
                             <div key={user.id}>
-                                <FollowedUserCard user={user} />
+                                <FollowedUserCard
+                                    user={user}
+                                    editMode={editMode}
+                                />
                             </div>
                         )
                     })
                 }
             </div>
             <AddUserCloset />
+            <button onClick={() => setEditMode(!editMode)}>{editMode ? 'Cancel' : 'Unfollow Closet'}</button>
         </div>
     )
 }
