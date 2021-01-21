@@ -30,6 +30,7 @@ export default function EditClothingItem(props) {
     const classes = useStyles();
     const location = useLocation();
     const selectedCard = useSelector(store => store.edit)
+    const userInfo = useSelector(store => store.user)
     const [itemName, setItemName] = useState(selectedCard.item_name);
     const [itemSize, setItemSize] = useState(selectedCard.item_size);
     const [itemNote, setItemNote] = useState(selectedCard.item_note);
@@ -59,7 +60,8 @@ export default function EditClothingItem(props) {
                 itemSize: itemSize,
                 itemNote: itemNote,
                 brandID: selectedCard.brand_id,
-                brandUrlID: brandUrlID
+                brandUrlID: brandUrlID,
+                userID: userInfo.id
             }
         })
     }

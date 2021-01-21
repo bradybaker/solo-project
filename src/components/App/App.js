@@ -119,10 +119,8 @@ function App() {
               component={RegisterPage}
               authRedirect="/user"
             />
+
             <ProtectedRoute
-              // with authRedirect:
-              // - if logged in, redirects to "/user"
-              // - else shows LandingPage at "/home"
               exact
               path="/home"
               component={LoginPage}

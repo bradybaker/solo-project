@@ -4,7 +4,7 @@ import axios from 'axios';
 function* addClothingItem(action) {
     try {
         yield axios.post(`/api/closet`, action.payload)
-        yield put({ type: 'FETCH_USER_CLOTHING', payload: action.payload.brandUrlID })
+        yield put({ type: 'FETCH_USER_CLOTHING', payload: { brandID: action.payload.brandUrlID, userID: action.payload.userID } })
     } catch (error) {
         console.log('Error in addBrand Saga', error)
     }

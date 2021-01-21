@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import { useLocation } from 'react-router-dom'
 import { Button, TextField, Slide } from '@material-ui/core';
@@ -34,6 +34,7 @@ export default function AddClothingItem() {
     const [itemSize, setItemSize] = useState('');
     const [itemNote, setItemNote] = useState('');
     const brandUrlID = new URLSearchParams(location.search).get('brandid');
+    const userInfo = useSelector(store => store.user)
 
     useEffect(() => {
         // dispatch({ type: 'FETCH_USER_CLOTHING', payload: brandUrlID })
@@ -58,7 +59,8 @@ export default function AddClothingItem() {
                 itemSize: itemSize,
                 itemNote: itemNote,
                 brandID: brandUrlID,
-                brandUrlID: brandUrlID
+                brandUrlID: brandUrlID,
+                userID: userInfo.id
             }
         })
     }
