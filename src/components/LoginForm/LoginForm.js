@@ -1,11 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { withStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import TextField from '@material-ui/core/TextField';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+
+const styles = theme => ({
+  root: {
+    display: 'inline',
+  },
+  // margin: {
+  //   margin: theme.spacing(1),
+  // },
+  textField: {
+    flexBasis: 200,
+  },
+});
 
 class LoginForm extends Component {
   state = {
     username: '',
     password: '',
+    showPassword: false,
   };
 
   login = (event) => {
@@ -30,7 +49,12 @@ class LoginForm extends Component {
     });
   };
 
+  handleClickShowPassword = () => {
+    this.setState(state => ({ showPassword: !state.showPassword }));
+  };
+
   render() {
+    const { classes } = this.props;
     return (
       <form className="formPanel" onSubmit={this.login}>
         <h2>Login</h2>
@@ -39,29 +63,36 @@ class LoginForm extends Component {
             {this.props.store.errors.loginMessage}
           </h3>
         )}
-        <div>
-          <label htmlFor="username">
-            Username:
-            <input
-              type="text"
-              name="username"
-              required
-              value={this.state.username}
-              onChange={this.handleInputChangeFor('username')}
-            />
-          </label>
-        </div>
-        <div>
-          <label htmlFor="password">
-            Password:
-            <input
-              type="password"
-              name="password"
-              required
-              value={this.state.password}
-              onChange={this.handleInputChangeFor('password')}
-            />
-          </label>
+        <div className={classes.root}>
+          <TextField
+            required
+            id="standard-required"
+            label="Username"
+            className={classes.textField}
+            onChange={this.handleInputChangeFor('username')}
+            margin="normal"
+          />
+          <TextField
+            required
+            id="password"
+            className={classes.textField}
+            type={this.state.showPassword ? 'text' : 'password'}
+            label="Password"
+            value={this.state.password}
+            onChange={this.handleInputChangeFor('password')}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="Toggle password visibility"
+                    onClick={this.handleClickShowPassword}
+                  >
+                    {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
         </div>
         <div>
           <input className="btn" type="submit" name="submit" value="Log In" />
@@ -71,4 +102,4 @@ class LoginForm extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(LoginForm);
+export default withStyles(styles)(connect(mapStoreToProps)(LoginForm));
