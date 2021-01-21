@@ -8,7 +8,8 @@ router.get('/:id/:brandID', rejectUnauthenticated, (req, res) => {
     // GET route code here
     let queryText = `SELECT brand.name, clothing.id, clothing.item_name, clothing.item_size, 
                      clothing.item_note, clothing.brand_id FROM clothing JOIN brand 
-                     ON clothing.brand_id = brand.id WHERE brand_id=$1 AND user_id=$2;`
+                     ON clothing.brand_id = brand.id WHERE brand_id=$1 AND user_id=$2
+                     ORDER BY clothing.item_name;`
     let userId = req.params.id
     let brandId = req.params.brandID
     pool.query(queryText, [brandId, userId])

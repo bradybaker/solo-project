@@ -1,33 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import AddClothingItem from '../AddClothingItem/AddClothingItem.jsx'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Popover from '@material-ui/core/Popover';
-import IconButton from '@material-ui/core/IconButton';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import DeleteIcon from '@material-ui/icons/Delete';
 import Swal from 'sweetalert2'
 import EditClothingItem from '../EditClothingItem/EditClothingItem.jsx';
 import '../App/App.css'
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        maxWidth: 275,
-    },
-    title: {
-        fontSize: 14,
-    },
-    pos: {
-        marginBottom: 12,
-    },
-    typography: {
-        padding: theme.spacing(2),
-    },
-}));
 
 
 function BrandCloset() {
@@ -35,33 +12,17 @@ function BrandCloset() {
     const dispatch = useDispatch();
     const userClothes = useSelector(store => store.userClothingReducer)
     const userInfo = useSelector(store => store.user)
-    const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [editMode, setEditMode] = useState(false)
     const params = new URLSearchParams(location.search.substring(1))
     const brandUrlName = params.get('brandName')
     const brandUrlID = params.get('brandid');
-    const selectedCard = useSelector(store => store.edit)
 
     useEffect(() => {
         dispatch({ type: 'FETCH_USER_CLOTHING', payload: { brandID: brandUrlID, userID: userInfo.id } })
         // eslint-disable-next-line
     }, []);
 
-    const handleClick = (event, item) => {
-        setAnchorEl(event.currentTarget);
-        dispatch({ type: 'SEND_EDIT_INFORMATION', payload: item })
-        console.log('id to edit', item)
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
-
     const handleDelete = (selectedID) => {
-        console.log('Clicking delete', id)
         Swal.fire({
             title: 'Are you sure?',
             text: 'This clothing item will be removed from the closet',
@@ -78,7 +39,7 @@ function BrandCloset() {
                     'success',
                     false
                 ) // end Swal IF
-                dispatch({ type: 'DELETE_USER_CLOTHING_ITEM', payload: { id: selectedID, brandUrlID: brandUrlID } })
+                dispatch({ type: 'DELETE_USER_CLOTHING_ITEM', payload: { id: selectedID, brandUrlID: brandUrlID, userID: userInfo.id } })
             } else if (result.dismiss === Swal.DismissReason.cancel) {
                 Swal.fire(
                     'Cancelled',
@@ -98,48 +59,32 @@ function BrandCloset() {
                     userClothes.map(item => {
                         return (
                             <div key={item.id}>
-                                <Card className={classes.root} variant="outlined" >
-                                    <CardContent>
-                                        <IconButton aria-label="settings" onClick={(e) => handleClick(e, item)} style={{ marginLeft: 180, paddingTop: 1 }} >
-                                            <MoreVertIcon />
-                                        </IconButton>
-                                        <Popover
-                                            id={id}
-                                            open={open}
-                                            anchorEl={anchorEl}
-                                            onClose={handleClose}
-                                            anchorOrigin={{
-                                                vertical: 'center',
-                                                horizontal: 'right',
-                                            }}
-                                            transformOrigin={{
-                                                vertical: 'bottom',
-                                                horizontal: 'left',
-                                            }}
-                                        >
+                                <div className='card hvr-float' key={item.id}>
+                                    <h2>{item.item_name}</h2>
+                                    <h2>{item.item_size}</h2>
+                                    <h2>{item.item_note}</h2>
+                                </div>
+                                <div style={{ textAlign: 'center' }}>
+                                    {editMode &&
+                                        <div className='iconHolder'>
+                                            <EditClothingItem
+                                                itemName={item.item_name}
+                                                itemSize={item.item_size}
+                                                itemNote={item.item_note}
+                                                itemID={item.id}
+                                            />
+                                            <i className="fas fa-times-circle deleteIcon" onClick={() => handleDelete(item.id)}></i>
+                                        </div>
+                                    }
+                                </div>
 
-                                            <EditClothingItem />
-                                            <DeleteIcon onClick={() => handleDelete(selectedCard.id)} style={{ margin: 5 }} />
-
-                                        </Popover>
-                                        <Typography variant="h5" component="h2" >
-                                            {item.item_name}
-                                        </Typography>
-                                        <Typography variant="h5" component="h2">
-                                            {item.item_size}
-                                        </Typography>
-                                        <Typography className={classes.pos} color="textSecondary">
-                                            {item.item_note}
-                                        </Typography>
-                                    </CardContent>
-                                </Card>
                             </div>
                         )
                     })
                 }
             </div>
             <AddClothingItem />
-
+            <button onClick={() => setEditMode(!editMode)}>{editMode ? 'Cancel' : 'Update'}</button>
         </div >
     );
 }

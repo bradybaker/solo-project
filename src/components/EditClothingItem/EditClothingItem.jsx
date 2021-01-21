@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import { useLocation } from 'react-router-dom'
 import { Button, TextField, Slide } from '@material-ui/core';
-import EditIcon from '@material-ui/icons/Edit';
+// import EditIcon from '@material-ui/icons/Edit';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -29,10 +29,10 @@ export default function EditClothingItem(props) {
     const [open, setOpen] = React.useState(false);
     const classes = useStyles();
     const location = useLocation();
-    const selectedCard = useSelector(store => store.edit)
-    const [itemName, setItemName] = useState(selectedCard.item_name);
-    const [itemSize, setItemSize] = useState(selectedCard.item_size);
-    const [itemNote, setItemNote] = useState(selectedCard.item_note);
+    const userInfo = useSelector(store => store.user)
+    const [itemName, setItemName] = useState(props.itemName);
+    const [itemSize, setItemSize] = useState(props.itemSize);
+    const [itemNote, setItemNote] = useState(props.itemNote);
     const brandUrlID = new URLSearchParams(location.search).get('brandid');
 
     useEffect(() => {
@@ -54,20 +54,23 @@ export default function EditClothingItem(props) {
             type: 'EDIT_USER_CLOTHING_ITEM',
             payload:
             {
-                id: selectedCard.id,
+                id: props.itemID,
                 itemName: itemName,
                 itemSize: itemSize,
                 itemNote: itemNote,
-                brandID: selectedCard.brand_id,
-                brandUrlID: brandUrlID
+                brandUrlID: brandUrlID,
+                userID: userInfo.id
             }
         })
     }
 
     return (
         <div>
-            <EditIcon style={{ margin: 5 }} type='button' onClick={handleClickOpen}>
-            </EditIcon>
+            <i
+                style={{ marginRight: 40 }}
+                className="fas fa-edit deleteIcon"
+                onClick={handleClickOpen}>
+            </i>
             <Dialog
                 open={open}
                 TransitionComponent={Transition}
