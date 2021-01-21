@@ -31,7 +31,7 @@ const FollowedUserCard = (props) => {
             </div>
             <div style={{ textAlign: 'center' }}>
                 {props.editMode &&
-                    <i class="fas fa-user-times deleteIcon" onClick={() => unfollowUser(id)}></i>
+                    <i className="fas fa-user-times deleteIcon" onClick={() => unfollowUser(id)}></i>
                 }
             </div>
         </>
