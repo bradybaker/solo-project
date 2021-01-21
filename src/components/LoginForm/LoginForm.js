@@ -10,12 +10,11 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 const styles = theme => ({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: 'inline',
   },
-  margin: {
-    margin: theme.spacing(1),
-  },
+  // margin: {
+  //   margin: theme.spacing(1),
+  // },
   textField: {
     flexBasis: 200,
   },
