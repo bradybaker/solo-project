@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import BrandCards from '../BrandCards/BrandCards.jsx'
 import AddBrandForm from '../AddBrandForm/AddBrandForm.jsx';
+import { Button } from '@material-ui/core'
 import '../App/App.css'
 
 function UserPage() {
@@ -20,7 +21,9 @@ function UserPage() {
       <h1 className='textTitle'>Welcome to Your Closet {userInfo.f_name}!</h1>
       <BrandCards editMode={editMode} /> {/* refactor  */}
       <AddBrandForm />
-      <button onClick={() => setEditMode(!editMode)}>{editMode ? 'Cancel' : 'Delete Brand'}</button>
+      <div className='updateORDelete'>
+        <Button variant='outlined' onClick={() => setEditMode(!editMode)}>{editMode ? 'Cancel' : 'Delete Brand'}</Button>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import { useLocation } from 'react-router-dom'
@@ -34,11 +34,6 @@ export default function EditClothingItem(props) {
     const [itemSize, setItemSize] = useState(props.itemSize);
     const [itemNote, setItemNote] = useState(props.itemNote);
     const brandUrlID = new URLSearchParams(location.search).get('brandid');
-
-    useEffect(() => {
-        // dispatch({ type: 'FETCH_USER_CLOTHING', payload: brandUrlID })
-        // eslint-disable-next-line
-    }, [])
 
     const handleClickOpen = () => {
         setOpen(true);
