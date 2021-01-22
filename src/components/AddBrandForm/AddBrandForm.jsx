@@ -5,7 +5,6 @@ import { Autocomplete } from '@material-ui/lab';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import '../App/App.css'
 
@@ -54,11 +53,8 @@ export default function AddBrandForm() {
                 aria-labelledby="form-dialog-title"
 
             >
-                <DialogTitle id="form-dialog-title">Add a Brand to Your Closet!</DialogTitle>
+                <DialogTitle style={{ textAlign: 'center' }} id="form-dialog-title">Add a Brand to Your Closet!</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
-                        Helper Text
-                    </DialogContentText>
                     <form onSubmit={handleSubmit}>
                         <Autocomplete
                             id="Brand Selector"

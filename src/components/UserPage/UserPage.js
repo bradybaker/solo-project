@@ -17,7 +17,7 @@ function UserPage() {
   return (
     <div id='UserPage' className='root'>
 
-      <h1 id="welcome">Welcome to you closet {userInfo.f_name}!</h1>
+      <h1 className='textTitle'>Welcome to Your Closet {userInfo.f_name}!</h1>
       <BrandCards editMode={editMode} /> {/* refactor  */}
       <AddBrandForm />
       <button onClick={() => setEditMode(!editMode)}>{editMode ? 'Cancel' : 'Delete Brand'}</button>

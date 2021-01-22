@@ -6,7 +6,6 @@ import { Button, TextField, Slide } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -17,7 +16,9 @@ const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
             margin: theme.spacing(1),
-            width: '25ch',
+            width: '35ch',
+            height: 'auto',
+            display: 'flex'
         },
     },
 }));
@@ -66,13 +67,9 @@ export default function AddClothingItem() {
                 TransitionComponent={Transition}
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title"
-
             >
-                <DialogTitle id="form-dialog-title">Add a clothing item to this brand!</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        Helper Text
-                    </DialogContentText>
+                <DialogTitle style={{ textAlign: 'center' }} id="form-dialog-title">Add a Clothing Item!</DialogTitle>
+                <DialogContent style={{ justifyContent: 'center', alignItems: 'center' }}>
                     <form onSubmit={handleSubmit} className={classes.root}>
                         <TextField
                             required
@@ -96,7 +93,7 @@ export default function AddClothingItem() {
                             variant="outlined"
                         />
                         <DialogActions>
-                            <Button onClick={handleClose} color="primary">
+                            <Button onClick={handleClose} variant='outlined' color="primary">
                                 Cancel
                         </Button>
                             <Button onClick={handleClose} color="primary" type='submit'>

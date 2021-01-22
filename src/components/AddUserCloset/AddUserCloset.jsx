@@ -5,7 +5,6 @@ import { Autocomplete } from '@material-ui/lab';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -49,11 +48,8 @@ export default function AddUserCloset() {
                 aria-labelledby="follow-another-user"
 
             >
-                <DialogTitle id="follow-another-user">Follow another user's closet!</DialogTitle>
+                <DialogTitle style={{ textAlign: 'center' }} id="follow-another-user">Follow another user's closet!</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
-                        Helper Text
-                    </DialogContentText>
                     <form onSubmit={handleSubmit}>
                         <Autocomplete
                             id="user-search"
@@ -61,7 +57,7 @@ export default function AddUserCloset() {
                             getOptionLabel={(option) => option.username}
                             onChange={(event, value) => setFollowedUserID(value)}
                             style={{ width: 300, justifyContent: 'center' }}
-                            renderInput={(params) => <TextField {...params} label="Brand Name" variant="outlined" />}
+                            renderInput={(params) => <TextField {...params} label="Search by Username" variant="outlined" />}
                         />
                         <DialogActions>
                             <Button onClick={handleClose} color="primary">
