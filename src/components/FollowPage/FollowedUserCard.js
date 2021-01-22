@@ -26,12 +26,13 @@ const FollowedUserCard = (props) => {
 
     return (
         <>
-            <div className='card hvr-float' onClick={() => goToCloset(id, f_name, l_name)}>
+            <div className='cardFollow hvr-float' onClick={() => goToCloset(id, f_name, l_name)}>
+                <i class="fas fa-laugh-wink"></i>
                 <h2>{f_name} {l_name}</h2>
             </div>
             <div style={{ textAlign: 'center' }}>
                 {props.editMode &&
-                    <i className="fas fa-user-times deleteIcon" onClick={() => unfollowUser(id)}></i>
+                    <i className="fas fa-user-times" onClick={() => unfollowUser(id)}></i>
                 }
             </div>
         </>
