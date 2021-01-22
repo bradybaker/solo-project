@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import { useLocation } from 'react-router-dom'
 import { Button, TextField, Slide } from '@material-ui/core';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import { green } from '@material-ui/core/colors';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -36,11 +34,6 @@ export default function AddClothingItem() {
     const brandUrlID = new URLSearchParams(location.search).get('brandid');
     const userInfo = useSelector(store => store.user)
 
-    useEffect(() => {
-        // dispatch({ type: 'FETCH_USER_CLOTHING', payload: brandUrlID })
-        // eslint-disable-next-line
-    }, [])
-
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -67,8 +60,7 @@ export default function AddClothingItem() {
 
     return (
         <div>
-            <AddCircleIcon style={{ fontSize: 100, color: green[500] }} type='button' onClick={handleClickOpen}>
-            </AddCircleIcon>
+            <i class="fas fa-plus-circle addCircle" type='button' onClick={handleClickOpen}></i>
             <Dialog
                 open={open}
                 TransitionComponent={Transition}
