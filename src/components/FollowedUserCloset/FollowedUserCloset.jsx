@@ -33,7 +33,7 @@ const FollowedUserCloset = () => {
 
     return (
         <div className='root' >
-            <h1>{fName} {lName}'s closet</h1>
+            <h1 className='textTitle'>{fName} {lName}'s closet</h1>
             <div className='brandCardContainer'>
                 {
                     userBrands.sort(compare).map(item => {

@@ -24,12 +24,12 @@ function FollowedUserBrandCloset() {
 
     return (
         <div className='root' >
-            <h1>{fName} {lName}'s {brandName} Closet</h1>
+            <h1 className='textTitle'>{fName} {lName}'s {brandName} Closet</h1>
             <div className='brandCardContainer'>
                 {
                     followedUserClothing.map(item => {
                         return (
-                            <div className='card hvr-float' key={item.id}>
+                            <div className='cardFollowItem hvr-float' key={item.id}>
                                 <h2>{item.item_name}</h2>
                                 <h2>{item.item_size}</h2>
                                 <h2>{item.item_note}</h2>

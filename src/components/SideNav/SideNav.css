@@ -1,6 +1,6 @@
 .SideNav {
     height: 100%;
-    width: 275px;
+    width: 300px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -9,6 +9,7 @@
     padding-top: 1.2em;
     background-color: #2c414b;
     text-decoration: none;
+    font-variant: all-petite-caps;
 }
 
 .SideNavList {
@@ -29,7 +30,7 @@
     color: white;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-bottom: 1em;
     padding: 0 2px;
 }
@@ -72,7 +73,7 @@
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 30px;
-    font-size: 30px;
+    font-size: 40px;
     border-bottom: 6px solid #7bdcb5 ;
     padding-bottom: 2rem;
 }

@@ -53,16 +53,16 @@ function BrandCloset() {
 
     return (
         <div className='root'>
-            <h1>Your {brandUrlName} Closet</h1>
+            <h1 className='textTitle'>Your {brandUrlName} Closet</h1>
             <div className='brandCardContainer'>
                 {
                     userClothes.map(item => {
                         return (
                             <div key={item.id}>
-                                <div className='card hvr-float' key={item.id}>
+                                <div className='cardFollowItem hvr-float' key={item.id}>
                                     <h2>{item.item_name}</h2>
                                     <h2>{item.item_size}</h2>
-                                    <h2>{item.item_note}</h2>
+                                    <h2 style={{ textAlign: 'center' }}>{item.item_note}</h2>
                                 </div>
                                 <div style={{ textAlign: 'center' }}>
                                     {editMode &&

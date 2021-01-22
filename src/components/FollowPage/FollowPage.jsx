@@ -21,7 +21,7 @@ const FollowPage = () => {
 
     return (
         <div className='root'>
-            <h1>Closets You Follow</h1>
+            <h1 className='textTitle'>Closets You Follow</h1>
             <div className='brandCardContainer'>
                 {
                     followedUsers.map(user => {

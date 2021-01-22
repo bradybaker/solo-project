@@ -3,11 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import { useLocation } from 'react-router-dom'
 import { Button, TextField, Slide } from '@material-ui/core';
-// import EditIcon from '@material-ui/icons/Edit';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -17,8 +15,10 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
-            margin: theme.spacing(1),
-            width: '25ch',
+            margin: theme.spacing(1.5),
+            width: '35ch',
+            height: 'auto',
+            display: 'flex'
         },
     },
 }));
@@ -68,7 +68,7 @@ export default function EditClothingItem(props) {
         <div>
             <i
                 style={{ marginRight: 40 }}
-                className="fas fa-edit deleteIcon"
+                className="fas fa-edit"
                 onClick={handleClickOpen}>
             </i>
             <Dialog
@@ -78,11 +78,8 @@ export default function EditClothingItem(props) {
                 aria-labelledby="form-dialog-title"
 
             >
-                <DialogTitle id="form-dialog-title">Editing a clothing item</DialogTitle>
+                <DialogTitle style={{ textAlign: 'center' }} id="form-dialog-title">Editing a Clothing Item</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
-                        Helper Text
-                    </DialogContentText>
                     <form onSubmit={handleSubmit} className={classes.root}>
                         <TextField
                             required
