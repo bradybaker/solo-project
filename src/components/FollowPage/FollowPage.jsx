@@ -3,6 +3,7 @@ import AddUserCloset from '../AddUserCloset/AddUserCloset';
 import { useDispatch, useSelector } from 'react-redux'
 import '../App/App.css'
 import FollowedUserCard from './FollowedUserCard';
+import { Button } from '@material-ui/core'
 import '../App/App.css'
 
 
@@ -37,8 +38,10 @@ const FollowPage = () => {
                 }
             </div>
             <AddUserCloset />
-            <button onClick={() => setEditMode(!editMode)}>{editMode ? 'Cancel' : 'Unfollow Closet'}</button>
-        </div>
+            <div className='updateORDelete'>
+                <Button variant='outlined' onClick={() => setEditMode(!editMode)}>{editMode ? 'Cancel' : 'Unfollow Closet'}</Button>
+            </div>
+        </div >
     )
 }
 

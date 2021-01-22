@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AddClothingItem from '../AddClothingItem/AddClothingItem.jsx'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom'
+import { Button } from '@material-ui/core'
 import Swal from 'sweetalert2'
 import EditClothingItem from '../EditClothingItem/EditClothingItem.jsx';
 import '../App/App.css'
@@ -84,7 +85,9 @@ function BrandCloset() {
                 }
             </div>
             <AddClothingItem />
-            <button onClick={() => setEditMode(!editMode)}>{editMode ? 'Cancel' : 'Update'}</button>
+            <div className='updateORDelete'>
+                <Button variant='outlined' onClick={() => setEditMode(!editMode)}>{editMode ? 'Cancel' : 'Update'}</Button>
+            </div>
         </div >
     );
 }
