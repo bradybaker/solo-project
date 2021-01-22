@@ -122,7 +122,7 @@ input {
   width: 285px;
   height: 285px;
   margin: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -131,9 +131,9 @@ input {
 
 .cardFollow {
   width: 20rem;
-  height: 15rem;
+  height: 12rem;
   margin: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
