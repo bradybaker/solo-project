@@ -12,3 +12,34 @@ CREATE TABLE "user" (
     "password" VARCHAR (1000) NOT NULL,
     "searchable" BOOLEAN NOT NULL
 );
+
+CREATE TABLE "brand" (
+	"id" SERIAL PRIMARY KEY,
+	"name" VARCHAR(50), 
+	"logo" VARCHAR(100)
+);
+
+CREATE TABLE "user_brand" (
+	id SERIAL PRIMARY KEY,
+	user_id INT REFERENCES "user",
+	brand_id INT REFERENCES "brand"
+);
+
+CREATE TABLE "clothing" (
+	id SERIAL PRIMARY KEY,
+	item_name VARCHAR (100),
+	item_size VARCHAR (25),
+	item_note VARCHAR (200),
+	brand_id INT REFERENCES "brand",
+	user_id INT REFERENCES "user"
+);
+
+CREATE TABLE user_friend (
+	id SERIAL PRIMARY KEY,
+	user_id INT REFERENCES "user",
+	friend_id INT REFERENCES "user"
+);
+
+INSERT INTO "brand" ("name", "logo")
+VALUES ('American Apparel', 'https://logo.clearbit.com/americanapparel.com'), ('Zara', 'https://logo.clearbit.com/zara.com'), ('Forever 21', 'https://logo.clearbit.com/forever21.com'),
+('Coach', 'https://logo.clearbit.com/coach.com'), ('Gap', 'https://logo.clearbit.com/gap.com'), ('Levi''s', 'https://logo.clearbit.com/levi.com');
