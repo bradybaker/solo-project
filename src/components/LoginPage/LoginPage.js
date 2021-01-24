@@ -22,15 +22,6 @@ class LoginPage extends Component {
           <p className='subHeaderText'>Follow others and never worry about including a gift receipt again</p>
         </div>
         <center className='registerText'>
-          {/* <button
-            type="button"
-            className="btn btn_asLink"
-            onClick={() => {
-              this.props.history.push('/registration');
-            }}
-          >
-            Register
-          </button> */}
           <h1 >New User?</h1>
           <RegisterForm />
         </center>

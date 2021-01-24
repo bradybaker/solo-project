@@ -61,7 +61,7 @@ export default function AddClothingItem() {
 
     return (
         <div>
-            <i class="fas fa-plus-circle addCircle" type='button' onClick={handleClickOpen}></i>
+            <i className="fas fa-plus-circle addCircle" type='button' onClick={handleClickOpen}></i>
             <Dialog
                 open={open}
                 TransitionComponent={Transition}

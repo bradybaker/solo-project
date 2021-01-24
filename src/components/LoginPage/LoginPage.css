@@ -1,5 +1,6 @@
 .landingPage {
     background-color: #deeef0;
+    width: 100%;
 }
 
 .landingPageImage {
@@ -40,13 +41,21 @@
     padding: 8px;
     border-bottom: 1px solid black;
     font-family: 'Roboto Condensed', sans-serif;
-    height: 2em;
+    height: 1.7em;
     align-items: center;
     font-size: x-large;
 }
 
 .registerText {
-    padding-bottom: 20px;
+    padding-bottom: 4px;
 }
+
+@media screen and (max-width: 700px) {
+    .landingPageLeadText {
+    font-size: 1rem;
+    }
+    
+    
+  }
 
 
