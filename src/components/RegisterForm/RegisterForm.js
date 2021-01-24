@@ -16,10 +16,10 @@ const styles = theme => ({
     display: 'flex',
   },
   formControl: {
-    margin: theme.spacing.unit * 3,
+    margin: theme.spacing(3),
   },
   group: {
-    margin: `${theme.spacing.unit}px 0`,
+    margin: `${theme.spacing}px 0`,
   },
 });
 
@@ -63,7 +63,7 @@ class RegisterForm extends Component {
     const { fName, lName, email, username, password, searchable } = this.state.newUser
     return (
       <>
-        <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
+        <Button variant='contained' color="primary" onClick={this.handleClickOpen}>
           Register
         </Button>
         <Dialog

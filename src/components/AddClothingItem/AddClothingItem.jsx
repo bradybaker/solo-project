@@ -61,7 +61,7 @@ export default function AddClothingItem() {
 
     return (
         <div>
-            <i class="fas fa-plus-circle addCircle" type='button' onClick={handleClickOpen}></i>
+            <i className="fas fa-plus-circle addCircle" type='button' onClick={handleClickOpen}></i>
             <Dialog
                 open={open}
                 TransitionComponent={Transition}
@@ -92,12 +92,12 @@ export default function AddClothingItem() {
                             onChange={(event) => setItemNote(event.target.value)}
                             variant="outlined"
                         />
-                        <DialogActions>
-                            <Button onClick={handleClose} variant='outlined' color="primary">
-                                Cancel
-                        </Button>
-                            <Button onClick={handleClose} color="primary" type='submit'>
+                        <DialogActions style={{ alignItems: 'center', justifyContent: 'space-between' }}>
+                            <Button onClick={handleClose} variant='contained' color="primary" type='submit'>
                                 Add Clothing Item
+                        </Button>
+                            <Button onClick={handleClose} variant='contained' color="secondary">
+                                Cancel
                         </Button>
                         </DialogActions>
                     </form>

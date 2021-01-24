@@ -1,20 +1,22 @@
 import { createMuiTheme } from '@material-ui/core';
 
 const theme = createMuiTheme({
-
+    palette: {
+        primary: {
+            main: '#2c414b'
+        },
+        secondary: {
+            main: '#f09b80',
+            contrastText: 'black'
+        }
+    }
 
 })
 
 theme.overrides = {
-    MuiCard: {
-        root: {
-            width: 250,
-            margin: 20,
-            flexGrow: 1,
-            height: 300,
-            "&:hover": {
-                backgroundColor: 'rgb(7, 177, 77, 0.42)'
-            }
+    MuiButton: {
+        containedPrimary: {
+            fontWeight: 700,
         }
     }
 }

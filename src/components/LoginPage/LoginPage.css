@@ -1,11 +1,12 @@
 .landingPage {
     background-color: #deeef0;
+    width: 100%;
 }
 
 .landingPageImage {
     background-image: url(https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80);
     background-size: cover;
-    height: 800px;
+    height: 560px;
     width: 100%;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
@@ -13,7 +14,7 @@
 .landingPageLeadText {
     font-family: 'Roboto Condensed', sans-serif;
     text-align: center;
-    font-size: 5.5rem;
+    font-size: 5rem;
     margin-top: 1rem;
     font-weight: bolder;
 }
@@ -25,10 +26,11 @@
 }
 
 .subHeaderText {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-family: 'Roboto Condensed', sans-serif;
     padding: 1em;
     margin: 10px;
+    margin-bottom: 0px;
     margin-right: 4.5rem;
     margin-left: 4.5rem;
 }
@@ -39,13 +41,21 @@
     padding: 8px;
     border-bottom: 1px solid black;
     font-family: 'Roboto Condensed', sans-serif;
-    height: 2em;
+    height: 1.7em;
     align-items: center;
     font-size: x-large;
 }
 
 .registerText {
-    padding-bottom: 40px;
+    padding-bottom: 4px;
 }
+
+@media screen and (max-width: 700px) {
+    .landingPageLeadText {
+    font-size: 1rem;
+    }
+    
+    
+  }
 
 
