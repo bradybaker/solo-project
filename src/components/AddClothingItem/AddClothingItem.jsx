@@ -93,7 +93,7 @@ export default function AddClothingItem() {
                             variant="outlined"
                         />
                         <DialogActions>
-                            <Button onClick={handleClose} variant='outlined' color="primary">
+                            <Button onClick={handleClose} color="primary">
                                 Cancel
                         </Button>
                             <Button onClick={handleClose} color="primary" type='submit'>
