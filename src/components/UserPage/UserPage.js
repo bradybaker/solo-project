@@ -22,7 +22,7 @@ function UserPage() {
       <BrandCards editMode={editMode} /> {/* refactor  */}
       <AddBrandForm />
       <div className='updateORDelete'>
-        <Button variant='outlined' onClick={() => setEditMode(!editMode)}>{editMode ? 'Cancel' : 'Delete Brand'}</Button>
+        <Button variant='contained' color='primary' onClick={() => setEditMode(!editMode)}>{editMode ? 'Cancel' : 'Delete Brand'}</Button>
       </div>
     </div>
   );

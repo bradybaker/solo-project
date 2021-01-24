@@ -63,7 +63,7 @@ class RegisterForm extends Component {
     const { fName, lName, email, username, password, searchable } = this.state.newUser
     return (
       <>
-        <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
+        <Button variant='contained' color="primary" onClick={this.handleClickOpen}>
           Register
         </Button>
         <Dialog

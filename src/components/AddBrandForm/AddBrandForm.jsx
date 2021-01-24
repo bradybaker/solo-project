@@ -64,12 +64,12 @@ export default function AddBrandForm() {
                             style={{ width: 300, justifyContent: 'center' }}
                             renderInput={(params) => <TextField {...params} label="Brand Name" variant="outlined" />}
                         />
-                        <DialogActions>
-                            <Button onClick={handleClose} color="primary">
-                                Cancel
-                        </Button>
-                            <Button onClick={handleClose} color="primary" type='submit'>
+                        <DialogActions style={{ alignItems: 'center', justifyContent: 'space-between' }}>
+                            <Button onClick={handleClose} variant='contained' color="primary" type='submit'>
                                 Add Brand
+                        </Button>
+                            <Button onClick={handleClose} variant='contained' color="secondary">
+                                Cancel
                         </Button>
                         </DialogActions>
                     </form>

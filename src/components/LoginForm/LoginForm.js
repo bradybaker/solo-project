@@ -14,10 +14,10 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 const styles = theme => ({
   root: {
     display: 'flex',
-    flexWrap: 'wrap'
-  },
-  margin: {
-    margin: theme.spacing(3),
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 20
   },
   textField: {
     flexBasis: 200,
@@ -70,8 +70,8 @@ class LoginForm extends Component {
     const { classes } = this.props;
     return (
       <>
-        <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
-          Login
+        <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
+          Already A User?
         </Button>
         <Dialog
           open={this.state.open}
@@ -80,7 +80,7 @@ class LoginForm extends Component {
         >
           <DialogContent>
             <form className="formPanel" onSubmit={this.login}>
-              <h2>Login</h2>
+              <h2 style={{ marginBottom: 0 }}>Login</h2>
               {this.props.store.errors.loginMessage && (
                 <h3 className="alert" role="alert">
                   {this.props.store.errors.loginMessage}
@@ -118,7 +118,7 @@ class LoginForm extends Component {
                 />
               </div>
               <div>
-                <input className="btn" type="submit" name="submit" value="Log In" />
+                <Button variant='contained' color='primary' type="submit">Login</Button>
               </div>
             </form>
           </DialogContent>

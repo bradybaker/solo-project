@@ -59,12 +59,12 @@ export default function AddUserCloset() {
                             style={{ width: 300, justifyContent: 'center' }}
                             renderInput={(params) => <TextField {...params} label="Search by Username" variant="outlined" />}
                         />
-                        <DialogActions>
-                            <Button onClick={handleClose} color="primary">
-                                Cancel
-                        </Button>
-                            <Button onClick={handleClose} color="primary" type='submit'>
+                        <DialogActions style={{ alignItems: 'center', justifyContent: 'space-between' }}>
+                            <Button onClick={handleClose} variant='contained' color="primary" type='submit'>
                                 Follow Closet
+                        </Button>
+                            <Button onClick={handleClose} variant='contained' color="secondary">
+                                Cancel
                         </Button>
                         </DialogActions>
                     </form>
