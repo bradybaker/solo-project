@@ -100,12 +100,12 @@ export default function EditClothingItem(props) {
                             onChange={(event) => setItemNote(event.target.value)}
                             variant="outlined"
                         />
-                        <DialogActions>
-                            <Button onClick={handleClose} color="primary">
-                                Cancel
-                        </Button>
-                            <Button onClick={handleClose} color="primary" type='submit'>
+                        <DialogActions style={{ alignItems: 'center', justifyContent: 'center' }}>
+                            <Button onClick={handleClose} variant='contained' color="primary" type='submit'>
                                 Edit Clothing Item
+                        </Button>
+                            <Button onClick={handleClose} variant='contained' color="secondary">
+                                Cancel
                         </Button>
                         </DialogActions>
                     </form>

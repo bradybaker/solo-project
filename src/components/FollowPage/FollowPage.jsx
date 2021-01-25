@@ -39,7 +39,7 @@ const FollowPage = () => {
             </div>
             <AddUserCloset />
             <div className='updateORDelete'>
-                <Button variant='contained' color='primary' onClick={() => setEditMode(!editMode)}>{editMode ? 'Cancel' : 'Unfollow Closet'}</Button>
+                <Button variant='contained' color='primary' onClick={() => setEditMode(!editMode)}>{editMode ? 'Done' : 'Unfollow Closet'}</Button>
             </div>
         </div >
     )

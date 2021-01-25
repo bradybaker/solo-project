@@ -86,7 +86,7 @@ function BrandCloset() {
             </div>
             <AddClothingItem />
             <div className='updateORDelete'>
-                <Button variant='contained' color='primary' onClick={() => setEditMode(!editMode)}>{editMode ? 'Cancel' : 'Update'}</Button>
+                <Button variant='contained' color='primary' onClick={() => setEditMode(!editMode)}>{editMode ? 'Done' : 'Update'}</Button>
             </div>
         </div >
     );

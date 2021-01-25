@@ -22,7 +22,7 @@ class LoginPage extends Component {
           <p className='subHeaderText'>Follow others and never worry about including a gift receipt again</p>
         </div>
         <center className='registerText'>
-          <h1 >New User?</h1>
+          <h2 >New User?</h2>
           <RegisterForm />
         </center>
       </div>

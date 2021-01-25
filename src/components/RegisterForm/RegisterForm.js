@@ -149,7 +149,9 @@ class RegisterForm extends Component {
                 </FormControl>
               </div>
               <div>
-                <input className="btn" type="submit" name="submit" value="Register" />
+                <Button variant='contained' color='primary' type="submit">
+                  Register
+                </Button>
               </div>
             </form>
           </DialogContent>
