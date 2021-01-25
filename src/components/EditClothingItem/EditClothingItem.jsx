@@ -100,7 +100,7 @@ export default function EditClothingItem(props) {
                             onChange={(event) => setItemNote(event.target.value)}
                             variant="outlined"
                         />
-                        <DialogActions style={{ alignItems: 'center', justifyContent: 'center' }}>
+                        <DialogActions style={{ alignItems: 'center', justifyContent: 'space-between' }}>
                             <Button onClick={handleClose} variant='contained' color="primary" type='submit'>
                                 Edit Clothing Item
                         </Button>
