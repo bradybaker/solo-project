@@ -141,7 +141,7 @@ class RegisterForm extends Component {
               </div>
               <div>
                 <FormControl component="fieldset" className={classes.formControl}>
-                  <FormLabel component="legend">Searchable</FormLabel>
+                  <FormLabel component="legend">Public Profile?</FormLabel>
                   <RadioGroup className={classes.group} value={searchable} onChange={(event) => this.handleInputChangeFor(event, 'searchable')}>
                     <FormControlLabel value='true' control={<Radio />} label="Yes" />
                     <FormControlLabel value='false' control={<Radio />} label="No" />
