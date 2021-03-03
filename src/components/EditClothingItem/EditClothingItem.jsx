@@ -102,7 +102,7 @@ export default function EditClothingItem(props) {
                         />
                         <DialogActions style={{ alignItems: 'center', justifyContent: 'space-between' }}>
                             <Button onClick={handleClose} variant='contained' color="primary" type='submit'>
-                                Edit Clothing Item
+                                Update
                         </Button>
                             <Button onClick={handleClose} variant='contained' color="secondary">
                                 Cancel
