@@ -10,9 +10,10 @@ MYSIZE seeks to eliminate any grey area that is involved in both buying clothes 
 
 ## Screen Shot
 
-![Landing-Page](screenshots/homepage.png)
-![DetailsPage](screenshots/details.png)
-![Form-Page](screenshots/form.png)
+![Landing-Page](screenshots/landingPage.png)
+![User-Closet](screenshots/userCloset.png)
+![Brand-Closet](screenshots/brandCloset.png)
+![Follow-Page](screenshots/followPage.png)
 
 ## Prerequisites
 
@@ -29,10 +30,10 @@ MYSIZE seeks to eliminate any grey area that is involved in both buying clothes 
 
 ## Usage
 
-- On load you should see a list of all the movies
-- On the homepage users can click to go to a specific movie's detail page or delete the movie from the list
-- If users click the 'Add a Movie!' link on the nav bar - they can use the form on the page to add a new movie to the list!
-- Once the user clicks the 'submit' button they will be taken back to the home page to see the new movie they have added
+- On load you will be brought to the landing page where you can register as a new user
+- Once you log in you will be able to start adding brands to your closet with the '+' button on the bottom right of the screen
+- Once you have a brand in your closet you can click on the logo and go to that specific brand's closet to save your clothing sizes for that brand
+- You can also use the nav bar on the left to go to 'Followed Closets' and follow other users on the app to see what brand they have saved and their specific sizes for those brands
 
 ## Built With
 
